@@ -8,7 +8,7 @@ import (
 
 func SetUp() *iris.Application {
 	app := iris.New()
-	app.Logger().SetLevel(os.Getenv("DEBUG_LEVEL"))
+	app.Logger().SetLevel(os.Getenv("LOG_LEVEL"))
 	return app
 }
 

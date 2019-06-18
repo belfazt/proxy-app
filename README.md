@@ -6,5 +6,6 @@
 
 ```env
 PORT=8080
+LOG_LEVEL=debug
 ```
 
