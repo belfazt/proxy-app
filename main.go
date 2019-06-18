@@ -14,7 +14,9 @@ func main() {
 
 	utils.LoadEnv()
 
-	handlers.HandleRedirection()
+	app := server.SetUp()
 
-	server.RunServer(server.SetUp())
+	handlers.HandleRedirection(app)
+
+	server.RunServer(app)
 }

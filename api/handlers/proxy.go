@@ -1,8 +1,12 @@
 package handlers
 
-import "fmt"
+import (
+	"github.com/kataras/iris"
+)
 
 // Should redirect traffic
-func HandleRedirection() {
-	fmt.Println("Message from proxy")
+func HandleRedirection(app *iris.Application) {
+	app.Get("/", func(c iris.Context) {
+		c.JSON(iris.Map{"result": "ok"})
+	})
 }
