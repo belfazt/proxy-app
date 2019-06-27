@@ -12,7 +12,6 @@ func HandleRedirection(app *iris.Application) {
 }
 
 func pingHandler(c iris.Context) {
-	c.JSON(iris.Map{"result": "ok"})
 	response, err := json.Marshal(middleware.Queue)
 
 	if err != nil {
