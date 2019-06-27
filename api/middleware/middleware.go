@@ -24,13 +24,16 @@ type PrioNode struct {
 	Priority int
 }
 
+type PrioHash interface {
+	Read() hashtable.Hash
+}
+
 var Queue []*QueueNode
 var PriorityConfig hashtable.Hash
 var priorityConfigInitialSize int
 
 func Init() {
-	priorityConfigInitialSize = 10
-	PriorityConfig = readPriorityConfig()
+	PriorityConfig = Read()
 }
 
 func Handler(c iris.Context) {
@@ -72,7 +75,7 @@ func sortQueue() {
 	})
 }
 
-func readPriorityConfig() hashtable.Hash {
+func Read() hashtable.Hash {
 	var path, _ = filepath.Abs("")
 	file, err := os.Open(path + "/api/middleware/domain.txt")
 	if err != nil {
@@ -82,7 +85,7 @@ func readPriorityConfig() hashtable.Hash {
 	defer file.Close()
 	var scanner = bufio.NewScanner(file)
 
-	var hash = *hashtable.NewHashTable(priorityConfigInitialSize)
+	var hash = *hashtable.NewHashTable(10)
 
 	for scanner.Scan() {
 		if scanner.Text() == "" {
