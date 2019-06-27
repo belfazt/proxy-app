@@ -61,11 +61,15 @@ func Handler(c iris.Context) {
 
 	Queue = append(Queue, &node)
 
+	sortQueue()
+
 	c.Next()
 }
 
-func Init() {
-	Queue = append(Queue, &QueueNode{})
+func sortQueue() {
+	sort.Slice(Queue, func(i, j int) bool {
+		return Queue[i].Weight*Queue[i].Priority > Queue[j].Weight*Queue[j].Priority
+	})
 }
 
 func readPriorityConfig() hashtable.Hash {
