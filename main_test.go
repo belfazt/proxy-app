@@ -42,11 +42,12 @@ func TestSorting(t *testing.T) {
 		Domain string
 		Output string
 	}{
+		{Domain: "", Output: "error"},
+		{Domain: "phi", Output: "unexpected domain"},
 		{Domain: "alpha", Output: `["alpha"]`},
 		{Domain: "omega", Output: `["alpha","omega"]`},
 		{Domain: "alpha", Output: `["alpha","alpha","omega"]`},
 		{Domain: "beta", Output: `["alpha","alpha","omega","beta"]`},
-		{Domain: "", Output: "error"},
 	}
 
 	for _, caze := range cases {
