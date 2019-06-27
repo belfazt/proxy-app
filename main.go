@@ -14,12 +14,8 @@ func main() {
 	*/
 
 	utils.LoadEnv()
-
 	middleware.Init()
-
-	app := server.SetUp()
-
+	var app = server.SetUp()
 	handlers.HandleRedirection(app)
-
 	server.RunServer(app)
 }
