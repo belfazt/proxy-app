@@ -12,7 +12,12 @@ func HandleRedirection(app *iris.Application) {
 }
 
 func pingHandler(c iris.Context) {
-	response, err := json.Marshal(middleware.Queue)
+	var domains []string
+
+	for _, row := range middleware.Queue {
+		domains = append(domains, row.Domain)
+	}
+	response, err := json.Marshal(domains)
 
 	if err != nil {
 		c.JSON(iris.Map{"status": 400, "result": "parse error"})
