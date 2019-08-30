@@ -2,6 +2,10 @@
 
 ## Configuring
 
+```sh
+glide install
+```
+
 ### Sample .env
 
 ```env

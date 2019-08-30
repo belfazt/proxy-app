@@ -1,0 +1,16 @@
+package: github.com/belfazt/proxy-app
+import:
+- package: github.com/joho/godotenv
+  version: ^1.3.0
+- package: github.com/kataras/iris
+  version: ^11.2.8
+- package: github.com/timtadh/data-structures
+  version: ^0.5.3
+  subpackages:
+  - hashtable
+  - types
+testImport:
+- package: github.com/stretchr/testify
+  version: ^1.4.0
+  subpackages:
+  - assert
